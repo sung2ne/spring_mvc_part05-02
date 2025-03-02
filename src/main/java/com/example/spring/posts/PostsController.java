@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -47,7 +48,7 @@ public class PostsController {
         Model model
     ) {
         int pageSize = 10; // 페이지당 게시글 수
-        Map<String, Object> postsVoList = postsService.list(page, pageSize, searchType, searchKeyword);
+        Map<String, Object> result = postsService.list(page, pageSize, searchType, searchKeyword);
         model.addAttribute("postsVoList", result.get("postsVoList"));
         model.addAttribute("pagination", result.get("pagination"));
         model.addAttribute("searchType", result.get("searchType"));
